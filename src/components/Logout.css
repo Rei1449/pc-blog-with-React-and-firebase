@@ -1,0 +1,43 @@
+.logoutPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
+.logoutContainer {
+  background-color: rgb(219, 219, 219);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 180px;
+  width: 500px;
+  gap: 10px;
+  padding: 0px 40px;
+  box-shadow: 10px 10px 15px -5px #777777;
+  border-radius: 10px;
+}
+
+.loginContainer h1 {
+  margin: 0px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.logoutButton {
+  padding: 10px 0;
+  background-color: rgb(255, 74, 74);
+  border: none;
+  box-shadow: 10px 10px 15px -5px #777777;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.logoutButton:hover {
+  transform: translateY(5px);
+  box-shadow: none;
+  background-color: rgb(163, 0, 0);
+}

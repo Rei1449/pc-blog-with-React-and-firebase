@@ -1,0 +1,49 @@
+.registerPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
+.registerContainer {
+  background-color: rgb(219, 219, 219);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 400px;
+  width: 500px;
+  gap: 10px;
+  padding: 0px 40px;
+  box-shadow: 10px 10px 15px -5px #777777;
+  border-radius: 10px;
+}
+
+.registerContainer h1 {
+  margin: 0px;
+  text-align: center;
+}
+
+.registerContainer input {
+  width: 100%;
+  height: 30px;
+  outline: none;
+  padding: 0px 4px;
+}
+
+.registerButton {
+  padding: 10px 0;
+  background-color: rgb(130, 130, 255);
+  border: none;
+  box-shadow: 10px 10px 15px -5px #777777;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.registerButton:hover {
+  transform: translateY(5px);
+  box-shadow: none;
+  background-color: rgb(79, 79, 167);
+}
