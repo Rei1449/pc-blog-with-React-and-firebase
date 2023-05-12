@@ -3,6 +3,8 @@ import './Home.css';
 import { db } from '../firebase';
 import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
 import { auth } from '../firebase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {
   const [postList, setpostList] = useState([]);
@@ -62,6 +64,8 @@ const Home = () => {
     window.location.href = '/';
   };
 
+  const aaa = () => {};
+
   return (
     <div className="homePage">
       {/*検索欄*/}
@@ -73,10 +77,6 @@ const Home = () => {
             placeholder="検索欄"
             onChange={handleInputChange}
           />
-          {/*<button onClick={}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-            検索
-          </button>*/}
         </nav>
       </div>
       {postList.map((post) => {
@@ -84,6 +84,12 @@ const Home = () => {
           <div className="postContents" key={post.id}>
             <div className="postHeader">
               <h1>{post.title}</h1>
+              <button className="postHeaderIcon">
+                <FontAwesomeIcon icon={faStar} />
+              </button>
+              <div className="postHeaderIcon" onClick={aaa}>
+                <FontAwesomeIcon icon={faHeart} />
+              </div>
             </div>
             <div className="postTextContainer">{post.postsText}</div>
             <div className="nameAndDeleteButton">
