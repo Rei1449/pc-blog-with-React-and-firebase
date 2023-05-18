@@ -4,12 +4,13 @@ import { db } from '../firebase';
 import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore';
 import { auth } from '../firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {
   const [postList, setpostList] = useState([]);
   const [filterVal, setFilterVal] = useState('');
   const [valuePost, setValuePost] = useState([]);
+  const [btnClick, setBtnClick] = useState({});
 
   useEffect(() => {
     const getPosts = async () => {
@@ -38,7 +39,15 @@ const Home = () => {
       setpostList(valuePost);
       return;
     }
-
+    {
+      /*
+    大文字小文字の違いを許容、
+    部分一致、
+    指定されたオブジェクトが持つ列挙可能なプロパティの値を配列にして返す、
+    indexOf：値が見つからなかったとき-1、
+    typeof item === 'string'：文字列ではない場合、検索対象から除外
+  */
+    }
     const searchedPost = valuePost.filter(
       (post) =>
         Object.values(post).filter(
@@ -64,7 +73,17 @@ const Home = () => {
     window.location.href = '/';
   };
 
-  const aaa = () => {};
+  {
+    /*preState：前回の状態を参照するために使用、
+    押されたpostのidを引数として渡し、そのidの値を反転させる
+    */
+  }
+  const bookMark = (id) => {
+    setBtnClick((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
+  };
 
   return (
     <div className="homePage">
@@ -84,12 +103,21 @@ const Home = () => {
           <div className="postContents" key={post.id}>
             <div className="postHeader">
               <h1>{post.title}</h1>
-              <button className="postHeaderIcon">
-                <FontAwesomeIcon icon={faStar} />
-              </button>
-              <div className="postHeaderIcon" onClick={aaa}>
-                <FontAwesomeIcon icon={faHeart} />
-              </div>
+              {btnClick[post.id] ? (
+                <button
+                  className="postHeaderIconT"
+                  onClick={() => bookMark(post.id)}
+                >
+                  <FontAwesomeIcon icon={faBookmark} />
+                </button>
+              ) : (
+                <button
+                  className="postHeaderIconF"
+                  onClick={() => bookMark(post.id)}
+                >
+                  <FontAwesomeIcon icon={faBookmark} />
+                </button>
+              )}
             </div>
             <div className="postTextContainer">{post.postsText}</div>
             <div className="nameAndDeleteButton">
